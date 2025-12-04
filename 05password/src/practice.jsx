@@ -15,13 +15,11 @@ function Practice() {
     let pass = "";
     let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
-    if (numberAllowed) {
-      str += "1234567890";
-    }
-    if (charAllowed) {
-      str += "!@#$%^&*-_+=[]{}~`";
-    }
-    for (let i = 0; i <= length; i++) {
+    if (numberAllowed) str += "1234567890";
+
+    if (charAllowed) str += "!@#$%^&*-_+=[]{}~`";
+
+    for (let i = 0; i < length; i++) {
       const char = Math.floor(Math.random() * str.length + 1);
       pass += str.charAt(char);
     }
@@ -31,12 +29,13 @@ function Practice() {
   const copyToCLipBoard = useCallback(() => {
     passwordRef.current?.select();
     passwordRef.current?.setSelectionRange(0, 99);
-    window.navigator.clipboard.writeText(password);
+    window.navigator.clipboard.writeOnly(password);
   }, [password]);
 
   useEffect(() => {
     passwordGenerator();
   }, [length, numberAllowed, charAllowed, passwordGenerator]);
+
   return (
     <>
       <div className="bg-blue-500 ">
@@ -64,24 +63,20 @@ function Practice() {
           <div className="flex items-center gap-x-1">
             <input
               type="range"
+              className="cursor-pointer"
               min={6}
               max={100}
               value={length}
-              className="cursor-pointer"
-              onChange={(e) => {
-                setLenght(e.target.value);
-              }}
+              onChange={(e) => setLenght(e.target.value)}
             />
-            <label>Length: {length}</label>
+            <label>Length:{length}</label>
           </div>
           <div className="flex items-center gap-x-1">
             <input
               type="checkbox"
               id="numberInput"
               defaultChecked={numberAllowed}
-              onClick={() => {
-                setNumberAllowed((prev) => !prev);
-              }}
+              onChange={(prev) => setNumberAllowed(!prev)}
             />
             <label htmlFor="numberInput">Numbers</label>
           </div>
@@ -90,9 +85,7 @@ function Practice() {
               type="checkbox"
               id="characterInput"
               defaultChecked={charAllowed}
-              onClick={() => {
-                setCharAllowed((prev) => !prev);
-              }}
+              onChange={(prev) => setCharAllowed(!prev)}
             />
             <label htmlFor="characterInput">Characters</label>
           </div>
