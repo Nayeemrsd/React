@@ -76,7 +76,7 @@ function Practice() {
               type="checkbox"
               id="numberInput"
               defaultChecked={numberAllowed}
-              onChange={(prev) => setNumberAllowed(!prev)}
+              onClick={() => setNumberAllowed((prev) => !prev)}
             />
             <label htmlFor="numberInput">Numbers</label>
           </div>
@@ -85,7 +85,7 @@ function Practice() {
               type="checkbox"
               id="characterInput"
               defaultChecked={charAllowed}
-              onChange={(prev) => setCharAllowed(!prev)}
+              onClick={() => setCharAllowed((prev) => !prev)}
             />
             <label htmlFor="characterInput">Characters</label>
           </div>
