@@ -3,8 +3,7 @@ import { useState } from "react";
 import "./App.css";
 
 function App() {
-  const [color, setColor] = useState("grey");
-
+  const [color, setColor] = useState("green");
   return (
     <>
       <div

@@ -18,15 +18,29 @@ import Card from "./components/Card";
 
 // export default App;
 
-function App() {
+// function App() {
+//   return (
+//     <div>
+//       <h1 className="bg-green-800 text-3xl text-gray p-4 rounded-xl text-center">
+//         Tailwind and props
+//       </h1>
+//       <Card username={"nayeem"} btnText="Use me" />
+//       <Card />
+//     </div>
+//   );
+// }
+// export default App;
+
+function app() {
   return (
-    <div>
-      <h1 className="bg-green-800 text-3xl text-gray p-4 rounded-xl text-center">
-        Tailwind and props
+    <>
+      <h1 className="bg-blue-400 text-3xl text-center p-4">
+        learning props with Tailwind
       </h1>
-      <Card username={"nayeem"} btnText="Use me" />
-      <Card />
-    </div>
+      <Card username="mirza" />
+      <Card username="nayeem" btnText="Click me" />
+    </>
   );
 }
-export default App;
+
+export default app;
